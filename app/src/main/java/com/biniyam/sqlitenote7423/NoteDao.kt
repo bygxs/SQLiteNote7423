@@ -2,6 +2,7 @@ package com.biniyam.sqlitenote7423
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -42,6 +43,42 @@ class NoteDao( context: Context?, name: String?, factory: SQLiteDatabase.CursorF
 //        else return true
 
 
+    }
+    fun getAllNotes(): List<NoteModel> {
+        val returnList = ArrayList<NoteModel>()
+        val query = "SELECT * FROM $TABLE_NAME ORDERED BY $COL_TITLE DESC"
+
+        val db = this.readableDatabase
+
+        val result : Cursor = db.rawQuery(query, null)
+
+        if (result.moveToFirst()) {
+            do {
+                val noteId = result.getInt(0)
+                val noteTitle = result.getString(1)
+                val noteDetails = result.getString(3)
+
+                val note = NoteModel(noteId, noteTitle, noteDetails)
+                returnList.add(note)
+
+            } while (result.moveToNext())
+        }
+        result.close()
+        db.close()
+
+        return  returnList
+    }
+
+    fun deleteNote( note: NoteModel) :Boolean {
+        val db = this.writableDatabase
+        val query = "DELETE FROM $TABLE_NAME WHERE $COL_ID = ${note.id}"
+
+        val cursor : Cursor = db.rawQuery(query, null)
+        val result = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+
+        return  result
     }
 
 }

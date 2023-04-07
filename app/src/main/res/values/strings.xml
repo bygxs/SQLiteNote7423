@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SQLiteNote7423</string>
+    <string name="title_note">title_note</string>
+    <string name="detail_note">detail_note</string>
+    <string name="save">save</string>
+    <string name="add_notes">add_notes</string>
+</resources>

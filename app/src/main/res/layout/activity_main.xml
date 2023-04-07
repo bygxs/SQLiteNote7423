@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
 
-    <FrameLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -29,12 +29,12 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom|right"
             android:layout_margin="10dp"
+            android:contentDescription="@string/add_notes"
             android:elevation="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/baseline_add_circle_24"
-            app:fabCustomSize="60dp"
+            app:fabCustomSize="70dp"
             app:fabSize="auto"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:contentDescription="@string/add_notes" />
-    </FrameLayout>
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
